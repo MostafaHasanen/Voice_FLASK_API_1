@@ -1,1 +1,1 @@
-web: gunicorn Voice_Model_Flask:app
+web: gunicorn -b :$PORT Voice_Model_Flask:app
