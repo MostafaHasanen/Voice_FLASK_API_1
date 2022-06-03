@@ -41,7 +41,8 @@ def index_page():
 				 ,'Parameters required':'path' })
 
 @app.route('/predict', methods=['POST'])
-def predict_logic():
+def predict():
+    cgpa = request.form.get('cgpa')
     query= request.args
     path = query.get('path') # it pass string
     data, sample_rate = librosa.load(path,sr=8025) # downsampling sr=8025
@@ -50,7 +51,6 @@ def predict_logic():
     result = np.expand_dims(result, axis=2)
     prediciton = model.predict(result)
     pred_name = encoder_Y.inverse_transform(prediciton)
-	
     return jsonify({'prediction' : pred_name[0][0]})
 
 if __name__ == "__main__":
