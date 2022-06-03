@@ -1,1 +1,1 @@
-web: gunicorn Voice_Model_Flask:predict
+web: gunicorn Voice_Model_Flask:app
