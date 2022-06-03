@@ -3,8 +3,6 @@ import numpy as np
 import keras
 import librosa
 import joblib
-import os 
-from pml import app
 
 app = Flask(__name__)
 model = keras.models.load_model('Level_2_full_model.h5')
@@ -54,6 +52,6 @@ def predict():
     prediciton = model.predict(result)
     pred_name = encoder_Y.inverse_transform(prediciton)
     return jsonify({'prediction' : pred_name[0][0]})
-port = int(os.environ.get('PORT', 5000))
+port = int(os.environ.get('PORT', 33507))
 if __name__ == "__main__":
-	app.run(debug=True,host='0.0.0.0', port=port)
+	app.run(debug=True,host='0.0.0.0', port=33507)
