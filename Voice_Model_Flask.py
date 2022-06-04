@@ -52,4 +52,4 @@ def predict():
     pred_name = encoder_Y.inverse_transform(prediciton)
     return jsonify({'prediction' : pred_name[0][0]})
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(debug=True,host='0.0.0.0',port=5000)
