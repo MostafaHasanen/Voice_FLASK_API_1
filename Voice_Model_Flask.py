@@ -42,7 +42,6 @@ def index_page():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    cgpa = request.form.get('cgpa')
     query= request.args
     path = query.get('path') # it pass string
     data, sample_rate = librosa.load(path,sr=8025) # downsampling sr=8025
@@ -52,6 +51,5 @@ def predict():
     prediciton = model.predict(result)
     pred_name = encoder_Y.inverse_transform(prediciton)
     return jsonify({'prediction' : pred_name[0][0]})
-port = int(os.environ.get('PORT', 33507))
 if __name__ == "__main__":
-	app.run(debug=True,host='0.0.0.0', port=33507)
+	app.run(debug=True)
