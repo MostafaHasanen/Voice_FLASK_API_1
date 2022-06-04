@@ -3,3 +3,4 @@ keras
 librosa
 joblib
 gunicorn
+flask
